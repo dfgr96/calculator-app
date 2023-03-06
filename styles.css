@@ -2,44 +2,31 @@ body{
     padding: 0;
     margin: 0;
     margin-top: 5rem;
-    background: linear-gradient(to right, #00AAFF, #00FF6C);
+    background: linear-gradient(to right, #2e6986, #aaacbf);
 }
 
-.calculator-grid{
+#principal-input{
+    margin-left: 5rem;
+    justify-content:flex-start;
     display: grid;
-    justify-content: center;
-    min-width: 100vh;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
-.calculator-grid > button{
-    cursor: pointer;
-    font-size: 2rem;
-    border: 1px solid white;
-    outline: none;
-    background-color: rgba(255, 255, 255, .75);
+label[name=currency-field] {
+    font-size: 20px;
+  }
+
+#currency-field{
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 
-.output{
-    grid-column: 1 / -1;
-    background-color: rgba(0, 0, 0, .75);
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    padding: 10px;
-    word-wrap: break-word;
-    word-break: break-all;
-    text-align: center;
+#currency-lists{
+    margin-left: 1rem;
 }
 
-.output .display{
-    color: black;
-    font-size: 1.85rem;
-    text-align: right;
-    
-}
-
-.calculator-grid > button:hover{
-    background-color: rgba(255, 255, 255, .9);
+#button-convertion{
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    border-radius: 10%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

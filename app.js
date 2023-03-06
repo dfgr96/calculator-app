@@ -1,83 +1,31 @@
-const buttonNumbers = document.getElementsByName('data-number');
-const buttonOperator = document.getElementsByName('data-operator');
-const buttonDelete = document.getElementsByName('data-delete')[0];
-const buttonEqual = document.getElementsByName('data-equal')[0];
-let result = document.getElementById('result');
-let actualOperation = '';
-let previousOperation = '';
-let operation = undefined;
+const amountCurrent= document.getElementById('currency-field')
+const separateButton = document.getElementById('button-convertion')
+const listDropdown = document.getElementById('currency-lists')
+const amountResult= document.getElementById('response-field')
+const dolarValue = 4732
+const euroValue = 5056
+const realValue = 918
 
-buttonNumbers.forEach(function(button){
-    button.addEventListener('click', function(){
-        addNumber(button.innerText);
-    })
-});
+separateButton.onclick = function(){
+    let presentAmount = amountCurrent.value;
+    let valueCurrency = listDropdown.value;
 
-buttonOperator.forEach(function(button){
-    button.addEventListener('click', function(){
-        selectOperator(button.innerText)
-    })
-});
+    console.log(presentAmount);
+    console.log(valueCurrency);
+    convertionResult(presentAmount, valueCurrency);
+}
 
-buttonEqual.addEventListener('click', function(){
-    calculate();
-    updateDisplay();
-});
-
-buttonDelete.addEventListener('click', function(){
-    clear();
-    updateDisplay();
-});
-
-function selectOperator(op){
-    if(actualOperation === '') return;
-    if(previousOperation !== ''){
-        calculate()
+function convertionResult(number, currencyConvertion){
+    let result;
+    if (currencyConvertion === 'dolar') {
+        result =number/dolarValue;
     }
-    operation = op.toString();
-    previousOperation = actualOperation;
-    actualOperation = '';
-};
-
-function calculate(){
-    var calculus;
-    const previous = parseFloat(previousOperation);
-    const actual = parseFloat(actualOperation);
-    if(isNaN(previous) || isNaN(actual)) return;
-    switch(operation){
-        case '+':
-            calculus = previous + actual;
-            break;
-        case '-':
-            calculus = previous - actual;
-            break;
-        case 'x':
-            calculus = previous * actual;
-            break;
-        case '/':
-            calculus = previous / actual;
-            break;
-        default:
-            return;
-    };
-    actualOperation = calculus;
-    operation = undefined;
-    previousOperation = '';
-};
-
-function addNumber(num){
-    actualOperation = actualOperation.toString() + num.toString();
-    updateDisplay();
-};
-
-function clear(){
-    actualOperation= '';
-    previousOperation= '';
-    operation = undefined;
+    if (currencyConvertion === 'euro') {
+        result =number/euroValue;
+    }
+    if (currencyConvertion === 'real') {
+        result =number/realValue;
+    }
+    amountResult.value=result.toFixed(3);
 }
-
-function updateDisplay(){
-    result.value = actualOperation;
-}
-
 clear();
